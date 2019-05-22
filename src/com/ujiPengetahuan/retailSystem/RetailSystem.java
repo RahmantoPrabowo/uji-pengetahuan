@@ -29,7 +29,7 @@ public class RetailSystem {
 			}
 		}
 		
-		return String.valueOf((bill / 100)*5)+" "+String.valueOf(arrayDiscounts[3])+" Total discount get by "+ User.getName() + " is "
+		return "Total discount get by "+ User.getName() + " is "
 		+ String.valueOf(discount) + "% "
 				+ "\ntotal payable = "+String.valueOf(bill - (bill*(discount/100)));
 	}

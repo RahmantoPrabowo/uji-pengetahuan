@@ -6,25 +6,25 @@ import java.util.Stack;
 
 public class Graph {
 	private int v;
-	private LinkedList<Node>[] adj;
+	private LinkedList<Node>[] nodes;
 
 	public Graph(int v) {
 		this.v = v;
-		adj = new LinkedList[this.v];
+		nodes = new LinkedList[this.v];
 		for (int i = 0; i < v; ++i) {
-			adj[i] = new LinkedList<>();
+			nodes[i] = new LinkedList<>();
 		}
 	}
 	
 	public void addEdge(int u, int v, int weight) {
 		Node node = new Node(v, weight);
-		adj[u].add(node);// Add v to u's list
+		nodes[u].add(node);// Add v to u's list
 	}
 	
 	public void topologicalLongestUtil(int v, Boolean visited[],Stack<Integer> stack) {
 		visited[v] = true;
 
-		Iterator<Node> it = adj[v].iterator();
+		Iterator<Node> it = nodes[v].iterator();
 		while (it.hasNext()) {
 			Node node = it.next();
 			if (!visited[node.getV()]) {
@@ -60,7 +60,7 @@ public class Graph {
 			int u = (int) stack.pop();
 			if (dist[u] != Integer.MAX_VALUE) {
 				Iterator<Node> it;
-				it = adj[u].iterator();
+				it = nodes[u].iterator();
 				while (it.hasNext()) {
 					Node i = it.next();
 					if (dist[i.getV()] > dist[u] + i.getWeight() * -1) {
@@ -72,7 +72,7 @@ public class Graph {
 
 		StringBuilder builder = new StringBuilder();
 		for (int i = 0; i < v; i++) {
-			builder.append(dist[i] == Integer.MAX_VALUE ? "RUTE " : (dist[i] * -1) + " ");
+			builder.append(dist[i] == Integer.MAX_VALUE ? "RUTE TERPENDEK ADALAH " : (dist[i] * -1) + " ");
 		}
 
 		return builder.toString();
