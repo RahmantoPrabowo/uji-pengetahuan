@@ -14,15 +14,4 @@ import com.ujiPengetahuan.Application;
 public class AllTests {
 	
 	
-	@Test
-	public void test_main()
-	{
-		System.out.println("main");
-		String[] args = null;
-		final InputStream original = System.in;
-		Application.main(args);
-		System.setIn(original);
-	}
-	
-	
 }
